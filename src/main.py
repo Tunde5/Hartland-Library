@@ -72,3 +72,36 @@ def manage_books():
             print("No books found!")
 if choice == "1":
     manage_books()
+
+
+    # Manage users
+    def manage_users():
+        print("\nManage Users")
+        print("1. Register User")
+        print("2. Update User Info")
+        print("3. Remove User")
+        print("4. Back to Main Menu")
+        action = input("Enter your choice: ")
+
+        if action == "1":
+            user_id = input("Enter User ID: ")
+            name = input("Enter User Name: ")
+            contact = input("Enter Contact Info: ")
+            users.append({"UserID": user_id, "Name": name, "Contact": contact})
+            print("User registered successfully!")
+
+        elif action == "2":
+            user_id = input("Enter User ID to update: ")
+            for user in users:
+                if user["UserID"] == user_id:
+                    user["Name"] = input("Enter new Name: ")
+                    user["Contact"] = input("Enter new Contact Info: ")
+                    print("User updated successfully!")
+                    return
+            print("User not found!")
+
+        elif action == "3":
+            user_id = input("Enter User ID to remove: ")
+            users[:] = [user for user in users if user["UserID"] != user_id]
+            print("User removed successfully!")
+
