@@ -1,6 +1,25 @@
 # Add Book, Update Book, Remove Book, Search Book, Borrow Book, Return Book, Register User, Update User, Remove User,
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
+from src.functions import display_welcome_message, save_books, manage_books
+from src import database
 
+def test_functions():
+    print("\n--- Test: Display Welcome Message ---")
+    display_welcome_message()
+
+    print("\n--- Test: Add Books ---")
+    save_books("1984", "George Orwell")
+    save_books("To Kill a Mockingbird", "Harper Lee")
+
+    print("\nCurrent Books in the Library:")
+    for book in database.org_books:
+        print(book)
+
+if __name__ == "__main__":
+    test_functions()
 
 # Test Add Book, example title Harry Potter
 def test_add_book():
