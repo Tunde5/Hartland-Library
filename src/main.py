@@ -72,8 +72,6 @@ def manage_books():
             print("No books found!")
 if choice == "1":
     manage_books()
-
-
     # Manage users
     def manage_users():
         print("\nManage Users")
@@ -106,4 +104,36 @@ if choice == "1":
             print("User removed successfully!")
 if choice == "2":
     manage_users()
+
+
+    # Borrow/Return books
+    def borrow_return_books():
+        print("\nBorrow/Return Books")
+        print("1. Borrow Book")
+        print("2. Return Book")
+        print("3. Back to Main Menu")
+        action = input("Enter your choice: ")
+
+        if action == "1":
+            user_id = input("Enter User ID: ")
+            book_id = input("Enter Book ID: ")
+            for book in books:
+                if book["BookID"] == book_id and book["Availability"] == "Available":
+                    transactions.append({"UserID": user_id, "BookID": book_id, "Type": "Borrow"})
+                    book["Availability"] = "Borrowed"
+                    print("Book borrowed successfully!")
+                    return
+            print("Book not available!")
+
+        elif action == "2":
+            user_id = input("Enter User ID: ")
+            book_id = input("Enter Book ID: ")
+            for book in books:
+                if book["BookID"] == book_id and book["Availability"] == "Borrowed":
+                    transactions.append({"UserID": user_id, "BookID": book_id, "Type": "Return"})
+                    book["Availability"] = "Available"
+                    print("Book returned successfully!")
+                    return
+            print("Book not found or already available!")
+
 
