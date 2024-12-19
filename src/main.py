@@ -135,5 +135,7 @@ if choice == "2":
                     print("Book returned successfully!")
                     return
             print("Book not found or already available!")
+if choice == "3":
+    borrow_return_books()
 
 
