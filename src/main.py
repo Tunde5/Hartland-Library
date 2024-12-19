@@ -1,12 +1,32 @@
 # Initialize lists to store data
-books = []         # List to store book details as dictionaries
-users = []         # List to store user details as dictionaries
-transactions = []  # List to store transaction records (borrow/return)
+books = [
+    {"BookID": "101", "Title": "Quotations from Chairman Mao Tse-Tung", "Author": "Mao Zedong", "Availability": "Available"},
+    {"BookID": "102", "Title": "The Quran", "Author": "Anonymous", "Availability": "Available"},
+    {"BookID": "103", "Title": "Xinhua Zidian", "Author": "Wei Jiangong", "Availability": "Available"},
+    {"BookID": "104", "Title": "Don Quixote", "Author": "Miguel de Cervantes", "Availability": "Available"},
+    {"BookID": "105", "Title": "A Tale of Two Cities", "Author": "Charles Dickens", "Availability": "Available"},
+    {"BookID": "106", "Title": "The Book of Mormon", "Author": "Joseph Smith", "Availability": "Available"}
+]
+# Initialize users list with data
+users = [
+    {"UserID": "U001", "Name": "Alice Johnson", "Contact": "alice.johnson@example.com"},
+    {"UserID": "U002", "Name": "Bob Smith", "Contact": "bob.smith@example.com"},
+    {"UserID": "U003", "Name": "Charlie Brown", "Contact": "charlie.brown@example.com"},
+    {"UserID": "U004", "Name": "Diana Prince", "Contact": "diana.prince@example.com"},
+    {"UserID": "U005", "Name": "Eve Adams", "Contact": "eve.adams@example.com"}
+]
+# Initialize transactions records (borrow/return)
+transactions = [
+    {"TransactionID": "T001", "UserID": "U001", "BookID": "101", "Type": "Borrow", "Date": "2024-01-10"},
+    {"TransactionID": "T002", "UserID": "U002", "BookID": "102", "Type": "Borrow", "Date": "2024-01-12"},
+    {"TransactionID": "T003", "UserID": "U003", "BookID": "103", "Type": "Borrow", "Date": "2024-01-15"},
+    {"TransactionID": "T004", "UserID": "U004", "BookID": "104", "Type": "Return", "Date": "2024-01-20"},
+    {"TransactionID": "T005", "UserID": "U005", "BookID": "105", "Type": "Borrow", "Date": "2024-01-22"}
+]
 # Welcome message
 def display_welcome_message():
     print("Welcome to the Great Hartland Community Library!")
     print("Serving our community with a diverse collection of books.\n")
-
 # Display main menu
 def display_main_menu():
     print("\nMain Menu")
@@ -15,7 +35,6 @@ def display_main_menu():
     print("3. Borrow/Return Books")
     print("4. Exit")
     return input("Enter your choice: ")
-
 # Main program loop
 def main():
     display_welcome_message()
@@ -26,7 +45,6 @@ def main():
             break
         else:
             print("Feature not implemented yet!")
-
 if __name__ == "__main__":
     main()
 # Manage books
@@ -104,7 +122,6 @@ if choice == "1":
             print("User removed successfully!")
 if choice == "2":
     manage_users()
-
 
     # Borrow/Return books
     def borrow_return_books():
