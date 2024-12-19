@@ -29,3 +29,44 @@ def main():
 
 if __name__ == "__main__":
     main()
+# Manage books
+def manage_books():
+    print("\nManage Books")
+    print("1. Add Book")
+    print("2. Update Book")
+    print("3. Remove Book")
+    print("4. Search Book")
+    print("5. Back to Main Menu")
+    action = input("Enter your choice: ")
+
+    if action == "1":
+        book_id = input("Enter Book ID: ")
+        title = input("Enter Book Title: ")
+        author = input("Enter Author: ")
+        availability = "Available"
+        books.append({"BookID": book_id, "Title": title, "Author": author, "Availability": availability})
+        print("Book added successfully!")
+
+    elif action == "2":
+        book_id = input("Enter Book ID to update: ")
+        for book in books:
+            if book["BookID"] == book_id:
+                book["Title"] = input("Enter new Title: ")
+                book["Author"] = input("Enter new Author: ")
+                print("Book updated successfully!")
+                return
+        print("Book not found!")
+
+    elif action == "3":
+        book_id = input("Enter Book ID to remove: ")
+        books[:] = [book for book in books if book["BookID"] != book_id]
+        print("Book removed successfully!")
+
+    elif action == "4":
+        search_query = input("Enter Title or Author to search: ").lower()
+        results = [book for book in books if search_query in book["Title"].lower() or search_query in book["Author"].lower()]
+        if results:
+            for book in results:
+                print(book)
+        else:
+            print("No books found!")
