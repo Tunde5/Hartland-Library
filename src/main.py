@@ -70,3 +70,5 @@ def manage_books():
                 print(book)
         else:
             print("No books found!")
+if choice == "1":
+    manage_books()
