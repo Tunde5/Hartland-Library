@@ -104,4 +104,6 @@ if choice == "1":
             user_id = input("Enter User ID to remove: ")
             users[:] = [user for user in users if user["UserID"] != user_id]
             print("User removed successfully!")
+if choice == "2":
+    manage_users()
 
