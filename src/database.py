@@ -4,26 +4,26 @@ org_library = {
 }
 
 org_books = [
-    {"BookID": "101", "Title": "Quotations from Chairman Mao Tse-Tung", "Author": "Mao Zedong", "Available": "True"},
-    {"BookID": "102", "Title": "The Quran", "Author": "Anonymous", "Available": "True"},
-    {"BookID": "103", "Title": "Xinhua Zidian", "Author": "Wei Jiangong", "Available": "True"},
-    {"BookID": "104", "Title": "Don Quixote", "Author": "Miguel de Cervantes", "Available": "True"},
-    {"BookID": "105", "Title": "A Tale of Two Cities", "Author": "Charles Dickens", "Available": "True"},
-    {"BookID": "106", "Title": "The Book of Mormon", "Author": "Joseph Smith", "Available": "True"}
+    {"BookID": "1", "Title": "Quotations from Chairman Mao Tse-Tung", "Author": "Mao Zedong", "Available": "True"},
+    {"BookID": "2", "Title": "The Quran", "Author": "Anonymous", "Available": "True"},
+    {"BookID": "3", "Title": "Xinhua Zidian", "Author": "Wei Jiangong", "Available": "True"},
+    {"BookID": "4", "Title": "Don Quixote", "Author": "Miguel de Cervantes", "Available": "True"},
+    {"BookID": "5", "Title": "A Tale of Two Cities", "Author": "Charles Dickens", "Available": "True"},
+    {"BookID": "6", "Title": "The Book of Mormon", "Author": "Joseph Smith", "Available": "True"},
 ]
 # Initialize users list with data
 org_users = [
-    {"UserID": "U001", "Name": "Alice Johnson", "Contact": "alice.johnson@example.com"},
-    {"UserID": "U002", "Name": "Bob Smith", "Contact": "bob.smith@example.com"},
-    {"UserID": "U003", "Name": "Charlie Brown", "Contact": "charlie.brown@example.com"},
-    {"UserID": "U004", "Name": "Diana Prince", "Contact": "diana.prince@example.com"},
-    {"UserID": "U005", "Name": "Eve Adams", "Contact": "eve.adams@example.com"}
+    {"UserID": "1", "Name": "Alice Johnson", "Email": "alice.johnson@example.com"},
+    {"UserID": "2", "Name": "Bob Smith", "Email": "bob.smith@example.com"},
+    {"UserID": "3", "Name": "Charlie Brown", "Email": "charlie.brown@example.com"},
+    {"UserID": "4", "Name": "Diana Prince", "Email": "diana.prince@example.com"},
+    {"UserID": "5", "Name": "Eve Adams", "Email": "eve.adams@example.com"},
 ]
 # Initialize transactions records (borrow/return)
 org_transactions = [
-    {"TransactionID": "T001", "UserID": "U001", "BookID": "101", "Type": "Borrow", "Date": "2024-01-10"},
-    {"TransactionID": "T002", "UserID": "U002", "BookID": "102", "Type": "Borrow", "Date": "2024-01-12"},
-    {"TransactionID": "T003", "UserID": "U003", "BookID": "103", "Type": "Borrow", "Date": "2024-01-15"},
-    {"TransactionID": "T004", "UserID": "U004", "BookID": "104", "Type": "Return", "Date": "2024-01-20"},
-    {"TransactionID": "T005", "UserID": "U005", "BookID": "105", "Type": "Borrow", "Date": "2024-01-22"}
+    {"TransactionID": "1", "UserID": "U001", "BookID": "1", "Type": "Borrow", "Date": "2024-01-10"},
+    {"TransactionID": "2", "UserID": "U002", "BookID": "2", "Type": "Borrow", "Date": "2024-01-12"},
+    {"TransactionID": "3", "UserID": "U003", "BookID": "3", "Type": "Borrow", "Date": "2024-01-15"},
+    {"TransactionID": "4", "UserID": "U004", "BookID": "4", "Type": "Return", "Date": "2024-01-20"},
+    {"TransactionID": "5", "UserID": "U005", "BookID": "5", "Type": "Borrow", "Date": "2024-01-22"},
 ]

@@ -1,34 +1,25 @@
-
 import functions
 
-# Main program loop
-def main():
+functions.display_welcome_message()
 
-    functions.display_welcome_message()
+while True:
+    functions.display_main_menu()
 
-    while True:
+    input_choice = input("Enter your choice: ")
 
-        def main_menu():
-            while True:
-                print("\nMain Menu")
-                print("1. Manage Books")
-                print("2. Manage Users")
-                print("3. Borrow/Return Books")
-                print("4. Exit")
-                input_choice = input("Enter your choice: ")
+    match input_choice:
+        case "0":
+            print("Thank you for using the library system. Goodbye!")
+            break
+        case "1":
+            functions.manage_books()
+        case "2":
+            functions.manage_users()
+        case "3":
+            functions.borrow_return_books()
+        case "4":
+            functions.library_statistics()
 
-                if input_choice == "1":
-                    functions.manage_books()  # Call the manage_books function
-                elif input_choice == "2":
-                    functions.manage_users()  # Call the manage_users function
-                elif input_choice == "3":
-                    functions.borrow_return_books()  # Call the borrow/return function
-                elif input_choice == "4":
-                    print("Thank you for using the library system. Goodbye!")
-                    break
-                else:
-                    print("Invalid choice. Please try again.")
-
-        main_menu()
-
-main()
+        # If an exact match is not confirmed, this last case will be used if provided
+        case _:
+            print("Invalid choice. Please try again.")
