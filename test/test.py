@@ -1,10 +1,13 @@
 # Add Book, Update Book, Remove Book, Search Book, Borrow Book, Return Book, Register User, Update User, Remove User,
+
 import sys
 import os
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
 from src.functions import display_welcome_message, save_books, manage_books
 from src import database
+
 def test_functions():
     print("\n--- Test: Display Welcome Message ---")
     display_welcome_message()
@@ -17,8 +20,9 @@ def test_functions():
     for book in database.org_books:
         print(book)
 
-if __name__ == "__main__":
-    test_functions()
+# Run app
+
+test_functions()
 
 # Test Add Book, example title Harry Potter
 def test_add_book():
@@ -39,7 +43,7 @@ def test_update_book():
     book_id = "org_books"[-1][("BookID")]
     old_title = "org_books"[-1]["Title"]
     # Run the actual update_book function
-    "update_book"()
+    update_book()
     new_title = "org_books"[-1]["Title"]
     if old_title != new_title:
         print("Test Passed: Book updated successfully.")
@@ -52,7 +56,7 @@ def test_remove_book():
     add_book()  # First add a book to remove
     initial_count = len("org_books")
     # Run the actual remove_book function
-    "remove_book"()
+    remove_book()
     if len("org_books") == initial_count - 1:
         print("Test Passed: Book removed successfully.")
     else:
@@ -63,7 +67,7 @@ def test_search_book():
     print("\nTesting Search Book...")
     add_book()  # Ensure a book is available to search
     # Run the actual search_book function
-    "search_book"()
+    search_book()
     # This test requires manual validation by the user for now
     print("Check the search results to verify correctness.")
 
@@ -86,9 +90,9 @@ def test_return_book():
     print("\nTesting Return Book...")
     add_book()  # Ensure a book exists to return
     # Ensure a user exists to return the book
-    "borrow_book"()  # Borrow the book first
+    borrow_book()  # Borrow the book first
     initial_availability = "org_books"[-1]["Availability"]
-    "return_book"()  # Run the actual return_book function
+    return_book()  # Run the actual return_book function
     if "org_books"[-1]["Availability"] == "Available" and initial_availability == "Borrowed":
         print("Test Passed: Book returned successfully.")
     else:
@@ -99,7 +103,7 @@ def test_register_user():
     print("\nTesting Register User...")
     initial_count = len("users")
     # Run the actual register_user function
-    ("register_user")()
+    register_user()
     if len("users") == initial_count + 1:
         print("Test Passed: User registered successfully.")
     else:
@@ -108,9 +112,9 @@ def test_register_user():
 
 def test_update_user():
     print("\nTesting Update User...")
-    ("register_user")()  # Ensure a user exists to update
+    register_user()  # Ensure a user exists to update
     old_name = "users"[-1]["Name"]
-    ("update_user")()  # Run the actual update_user function
+    update_user()  # Run the actual update_user function
     new_name = "users"[-1]["Name"]
     if old_name != new_name:
         print("Test Passed: User updated successfully.")
@@ -118,11 +122,11 @@ def test_update_user():
         print("Test Failed: User was not updated.")
 
 
-def test_update_user():
+def test_remove_user():
     print("\nTesting Update User...")
-    ("register_user")()  # Ensure a user exists to update
+    register_user()  # Ensure a user exists to update
     old_name = "users"[-1][("Name")]
-    ("update_user")()  # Run the actual update_user function
+    update_user()  # Run the actual update_user function
     new_name = "users"[-1][("Name")]
     if old_name != new_name:
         print("Test Passed: User updated successfully.")
@@ -140,5 +144,6 @@ def test_suite():
     test_return_book()
     test_register_user()
     test_update_user()
-    ("test_remove_user")()
+    test_remove_user()
+    
     print("\nAll tests completed.")

@@ -1,8 +1,10 @@
-import database 
+import database
+
 
 # Display main menu
-def display_main_menu():
 
+
+def display_main_menu():
     print("\nMain Menu")
     print("0. Exit")
     print("1. Manage Books")
@@ -13,30 +15,78 @@ def display_main_menu():
 
 # Welcome message
 def display_welcome_message():
-
     print("\nWelcome to", database.org_library["name"])
     print("Serving our community with a diverse collection of books.\n")
 
 
 # Print library statistics
 def library_statistics():
-
     print("\nLibrary statistics:")
     print("Number of books:", len(database.org_books))
     print("Number of users:", len(database.org_users))
     print("Number of transactions:", len(database.org_transactions))
     print("Last book ID is:", database.org_books[-1]["BookID"])
 
+    print("\nCurrent Books in the Library:")
+    for book in database.org_books:
+        print(book)
+
+
 # Save a New Book
+
+
 def save_books(title, author, available="True"):
     if len(database.org_books):
         book_id = str(int(database.org_books[-1]["BookID"]) + 1)
     else:
         book_id = 1
-    database.org_books.append({"BookID": book_id, "Title": title, "Author": author, "Available": available})
+    database.org_books.append(
+        {"BookID": book_id, "Title": title, "Author": author, "Available": available})
     print(f"Book '{title}' added successfully with ID: {book_id}")
 
-# Manage Books Menu
+
+def book_exist(book_id):
+    for book in database.org_books:
+        if book["BookID"] == book_id:
+            return True
+    else:
+        return False
+
+
+def update_book(book_id, book_item):
+    print("Done!")
+
+
+def remove_book(book_id):
+    print("Done!")
+
+
+def search_book(book_id, text):
+    print("Done!")
+
+
+def borrow_book(book_id, user_id):
+    print("Done!")
+
+
+def return_book(book_id):
+    print("Done!")
+
+
+def register_user(name, email):
+    print("Done!")
+
+
+def update_user(user_id, name, email):
+    # Update user
+    print("Done!")
+
+
+def remove_user(user_id):
+    # Manage Books Menu
+    print("Done!")
+
+
 def manage_books():
     while True:
         print("\nManage Books")
@@ -55,21 +105,25 @@ def manage_books():
 
         elif input_action == "2":
             # Update book
+
             book_id = input("Enter Book ID: ")
-            for book in database.org_books:
-                if book["BookID"] == book_id:
-                    book["Title"] = input("Enter new Title: ")
-                    book["Author"] = input("Enter new Author: ")
-                    print("Book updated successfully!")
-                    break
-            else:
-                print("Book not found!")
+
+            book_item = {"BookID": book_id}
+
+            while book_exist(book_id):
+                book_item["Title"] = input("Enter new Title: ")
+                book_item["Author"] = input("Enter new Author: ")
+
+                # update org_books item with book id
+                update_book(book_id, book_item)
+                print("Book updated successfully!")
 
         elif input_action == "3":
             # Remove book
             book_id = input("Enter Book ID: ")
             initial_count = len(database.org_books)
-            database.org_books[:] = [book for book in database.org_books if book["BookID"] != book_id]
+            database.org_books[:] = [
+                book for book in database.org_books if book["BookID"] != book_id]
             if len(database.org_books) < initial_count:
                 print("Book removed successfully!")
             else:
@@ -93,7 +147,10 @@ def manage_books():
         else:
             print("Invalid choice. Please try again.")
 
+
 # Manage Users Menu
+
+
 def manage_users():
     while True:
         print("\nManage Users")
@@ -118,7 +175,8 @@ def manage_users():
             else:
                 user_id = 1
 
-            database.org_users.append({"UserID": user_id, "Name": name, "Email": email})
+            database.org_users.append(
+                {"UserID": user_id, "Name": name, "Email": email})
             print("User registered successfully! User ID is ", user_id)
 
         elif input_action_users == "2":
@@ -143,7 +201,8 @@ def manage_users():
 
             initial_count = len(database.org_users)
 
-            database.org_users[:] = [user for user in database.org_users if user["UserID"] != user_id]
+            database.org_users[:] = [
+                user for user in database.org_users if user["UserID"] != user_id]
 
             if len(database.org_users) < initial_count:
                 print("User removed successfully!")
@@ -156,7 +215,10 @@ def manage_users():
         else:
             print("Invalid choice. Please try again.")
 
+
 # Borrow/Return Books Menu
+
+
 def borrow_return_books():
     while True:
         print("\nBorrow/Return Books")
@@ -172,7 +234,8 @@ def borrow_return_books():
             book_id = input("Enter Book ID: ")
             for book in database.org_books:
                 if book["BookID"] == book_id and book["Available"] == "True":
-                    database.org_transactions.append({"UserID": user_id, "BookID": book_id, "Type": "Borrow"})
+                    database.org_transactions.append(
+                        {"UserID": user_id, "BookID": book_id, "Type": "Borrow"})
                     book["Available"] = "False"
                     print("Book borrowed successfully!")
                     break
@@ -185,7 +248,8 @@ def borrow_return_books():
             book_id = input("Enter Book ID: ")
             for book in database.org_books:
                 if book["BookID"] == book_id and book["Available"] == "False":
-                    database.org_transactions.append({"UserID": user_id, "BookID": book_id, "Type": "Return"})
+                    database.org_transactions.append(
+                        {"UserID": user_id, "BookID": book_id, "Type": "Return"})
                     book["Available"] = "True"
                     print("Book returned successfully!")
                     break
@@ -197,5 +261,3 @@ def borrow_return_books():
 
         else:
             print("Invalid choice. Please try again.")
-
-
